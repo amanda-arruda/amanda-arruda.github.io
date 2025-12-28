@@ -1,147 +1,148 @@
-/* ===== Reset & Base ===== */
-* {
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amanda Ava's Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== Homepage Styles ===== */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+            background: #fff0f5; /* soft lavender pastel */
+            color: #111;
+            line-height: 1.5;
+        }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-    background: #fefefe; /* light background */
-    color: #111;
-    line-height: 1.5;
-}
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-/* ===== Layout ===== */
-.page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 16px 60px;
-}
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 12px 0 16px;
+            text-align: center;
+        }
 
-h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 12px 0 16px;
-}
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
 
-/* ===== Top Menu ===== */
-.nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    margin: -20px -16px 24px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-}
+        /* ===== Navigation ===== */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
 
-.nav a {
-    color: #111;
-    font-size: 0.95rem;
-    font-weight: 500;
-    opacity: 0.75;
-}
+        .nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0.9;
+            background: #ffe4e1; /* pastel pink buttons */
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
 
-.nav a:hover,
-.nav a.active {
-    opacity: 1;
-}
+        .nav a:hover,
+        .nav a.active {
+            background: #ffccd5; /* slightly darker pastel */
+            color: #222;
+        }
 
-/* ===== Filters ===== */
-.filters {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
-}
+        /* ===== Banner ===== */
+        .banner img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto 24px;
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
 
-.filters select {
-    background: #fff;
-    color: #111;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 0.95rem;
-}
+        /* ===== Homepage Sections ===== */
+        .about, .links {
+            background: #fff7f7; /* very light pastel pink */
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
 
-/* ===== Grid ===== */
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
+        .links a {
+            color: #ff6f91; /* pastel pink links */
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-/* ===== Cards ===== */
-.card {
-    background: #fff; /* card background lighter */
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+        .links a:hover {
+            text-decoration: underline;
+        }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
+        /* ===== Footer ===== */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #555;
+            font-size: 0.85rem;
+        }
 
-.card img {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    object-fit: cover;
-    display: block;
-}
+        /* ===== Responsive ===== */
+        @media (min-width: 768px) {
+            .nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
 
-.album img {
-    aspect-ratio: 1 / 1;
-}
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="books.html">Books</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="music.html">Music</a>
+    </div>
 
-.card-content {
-    padding: 14px;
-}
+    <!-- Banner -->
+    <div class="banner">
+        <img src="images/banner.jpg" alt="banner">
+    </div>
 
-.title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
+    <!-- Main Content -->
+    <h1>Amanda Ava's Portal</h1>
 
-.meta {
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
+    <section class="about">
+        <h2>About Me</h2>
+        <p>Too scared to create. I look for inspiration while gathering the courage.</p>
+    </section>
 
-/* ===== Tags ===== */
-.tags {
-    margin-top: 8px;
-}
+    <section class="links">
+        <h2>Hyperlinks</h2>
+        <p>
+            <a href="resume.html">My Resume</a> | 
+            <a href="https://github.com/amanda-arruda" target="_blank">My GitHub</a>
+        </p>
+    </section>
 
-.tag {
-    display: inline-block;
-    background: rgba(0,0,0,0.05);
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    margin-right: 6px;
-}
+</div>
 
-/* ===== Rating ===== */
-.rating {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
+<!-- Footer -->
+<footer>
+    <hr>
+    <p><code>Copyright (C) 2025 Amanda Ava</code></p>
+</footer>
 
-/* ===== Desktop ===== */
-@media (min-width: 768px) {
-    .container {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    .nav {
-        justify-content: center;
-    }
-}
+</body>
+</html>
