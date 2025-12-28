@@ -1,5 +1,4 @@
 /* ===== Reset & Base ===== */
-
 * {
     box-sizing: border-box;
 }
@@ -7,13 +6,12 @@
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-    background: #0f0f12;
-    color: #eaeaf0;
+    background: #fefefe; /* light background */
+    color: #111;
     line-height: 1.5;
 }
 
 /* ===== Layout ===== */
-
 .page {
     max-width: 1100px;
     margin: 0 auto;
@@ -27,33 +25,32 @@ h1 {
 }
 
 /* ===== Top Menu ===== */
-
 .nav {
     position: sticky;
     top: 0;
-    background: rgba(15, 15, 18, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
     gap: 12px;
     padding: 14px 16px;
     margin: -20px -16px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .nav a {
-    color: #eaeaf0;
+    color: #111;
     font-size: 0.95rem;
     font-weight: 500;
     opacity: 0.75;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
     opacity: 1;
 }
 
 /* ===== Filters ===== */
-
 .filters {
     display: flex;
     flex-direction: column;
@@ -62,16 +59,15 @@ h1 {
 }
 
 .filters select {
-    background: #1a1a20;
-    color: #eaeaf0;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #fff;
+    color: #111;
+    border: 1px solid rgba(0,0,0,0.2);
     border-radius: 10px;
     padding: 12px;
     font-size: 0.95rem;
 }
 
 /* ===== Grid ===== */
-
 .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -79,17 +75,17 @@ h1 {
 }
 
 /* ===== Cards ===== */
-
 .card {
-    background: #1a1a20;
+    background: #fff; /* card background lighter */
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 .card img {
@@ -119,14 +115,13 @@ h1 {
 }
 
 /* ===== Tags ===== */
-
 .tags {
     margin-top: 8px;
 }
 
 .tag {
     display: inline-block;
-    background: rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.05);
     padding: 4px 8px;
     border-radius: 999px;
     font-size: 0.7rem;
@@ -134,7 +129,6 @@ h1 {
 }
 
 /* ===== Rating ===== */
-
 .rating {
     margin-top: 10px;
     font-size: 0.9rem;
@@ -142,7 +136,6 @@ h1 {
 }
 
 /* ===== Desktop ===== */
-
 @media (min-width: 768px) {
     .container {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
