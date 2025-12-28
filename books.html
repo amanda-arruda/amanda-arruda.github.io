@@ -2,62 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Books</title>
+    <title>My Books</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <style>
+        /* ===== Books Page Styles ===== */
 
+        body {
+            background: #fff0f5; /* soft pastel background */
+            color: #111;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+            line-height: 1.5;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            background: #ffe4e1;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background: #ffccd5;
+            color: #222;
+        }
+
+        /* ===== Container for cards ===== */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr; /* mobile: single column */
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            display: flex;
+            flex-direction: column; /* stacked on mobile */
+            background: #fff7f7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .card-content {
+            padding: 12px;
+        }
+
+        .title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .meta {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+
+        .tags {
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255,200,210,0.3);
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            margin-right: 4px;
+        }
+
+        .rating {
+            font-size: 0.9rem;
+        }
+
+        /* ===== Desktop layout ===== */
+        @media (min-width: 600px) {
+            .card {
+                flex-direction: row; /* cover left, content right */
+                gap: 16px;
+            }
+
+            .card img {
+                width: 120px;
+                max-height: 180px;
+                border-radius: 8px;
+                flex-shrink: 0;
+            }
+
+            .card-content {
+                flex: 1;
+            }
+
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+    </style>
+</head>
 <body>
 <div class="page">
 
-<h1>Books</h1>
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="books.html" class="active">Books</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="music.html">Music</a>
+    </div>
 
-<div class="nav">
-    <a href="index.html">Home</a>
-    <a href="books.html">Books</a>
-    <a href="movies.html">Movies</a>
-    <a href="series.html">Series</a>
-    <a href="music.html">Music</a>
-</div>
-
-<div class="filters">
-    <select id="tagFilter">
-        <option value="">All tags</option>
-        <option value="sci-fi">Sci-Fi</option>
-        <option value="classic">Classic</option>
-    </select>
-
-    <select id="authorSort">
-        <option value="">Author (default)</option>
-        <option value="asc">Author A–Z</option>
-    </select>
-
-    <select id="yearSort">
-        <option value="">Year (default)</option>
-        <option value="asc">Oldest → Newest</option>
-    </select>
-</div>
-
-<div class="container">
-
-<!-- COPY THIS CARD TO ADD BOOKS -->
-<div class="card"
-     data-author="margaret forster"
-     data-year="2004"
-     data-tags="fiction">
-
+    <h1>My Books</h1>
+<--------- BOOK CARD --------->
+        <div class="card">
     <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
 
-    <div class="card-content">
-        <div class="title">Diary of an Ordinary Woman (2004)</div>
-        <div class="meta">Margaret Forster · England</div>
-        <div class="tags">
-            <span class="tag">Fiction</span>
-            <span class="tag">Diary</span>
+            <div class="card-content">
+                <h3 class="title">Diary of an Ordinary Woman</h3>
+                <p class="meta">Margaret Forster | 2004 | England</p>
+                <div class="tags">
+                    <span class="tag">Fiction</span>
+<span class="tag">Diary</span>
+                </div>
+                <p class="rating">Rating: ★★★★★</p>
+            </div>
         </div>
-        <div class="rating">★★★★★</div>
+
+<!-- Example Book Card 3 -->
+        <div class="card">
+               <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
+            <div class="card-content">
+                <h3 class="title">Neuromancer</h3>
+                <p class="meta">William Gibson | 1984 | USA</p>
+                <div class="tags">
+                    <span class="tag">Cyberpunk</span>
+                    <span class="tag">Sci-Fi</span>
+                </div>
+                <p class="rating">Rating: ★★★★☆</p>
+            </div>
+        </div>
     </div>
+
+<!-- Example Book Card 3 -->
+        <div class="card">
+            <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
+
+            <div class="card-content">
+                <h3 class="title">Neuromancer</h3>
+                <p class="meta">William Gibson | 1984 | USA</p>
+                <div class="tags">
+                    <span class="tag">Cyberpunk</span>
+                    <span class="tag">Sci-Fi</span>
+                </div>
+                <p class="rating">Rating: ★★★★☆</p>
+            </div>
+        </div>
+    </div>
+
 </div>
-<!-- END CARD -->
+</body>
+</html>
+
 
 </div>
 
