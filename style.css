@@ -146,6 +146,99 @@
 }
     </div>
 
+/* ===== Books Cards ===== */
+.container {
+    display: grid;
+    grid-template-columns: 1fr; /* stacked on mobile */
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column; /* stacked on mobile */
+    background: #fff7f7; /* pastel card */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Mobile: cover on top */
+.card img {
+    width: 100%; /* full width on mobile */
+    max-height: 200px; /* limit height */
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Card content */
+.card-content {
+    padding: 12px;
+}
+
+/* Title and meta */
+.title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.meta {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 6px;
+}
+
+/* Tags */
+.tags {
+    margin-bottom: 6px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(255,200,210,0.3);
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    margin-right: 4px;
+}
+
+/* Rating */
+.rating {
+    font-size: 0.9rem;
+}
+
+/* ===== Desktop / Tablet: cover left, content right ===== */
+@media (min-width: 600px) {
+    .card {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .card img {
+        width: 120px; /* fixed width */
+        max-height: 180px; /* fixed max height */
+        border-radius: 8px;
+        flex-shrink: 0;
+    }
+
+    .card-content {
+        flex: 1;
+    }
+
+    /* Multiple cards per row */
+    .container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
     <!-- Main Content -->
     <h1>Amanda Ava's Portal</h1>
 
