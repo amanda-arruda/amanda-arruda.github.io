@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Books</h1>
+
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="series.html">Series</a>
+    <a href="music.html">Music</a>
+</div>
+
+<div class="filters">
+    <select id="tagFilter">
+        <option value="">All tags</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="classic">Classic</option>
+    </select>
+
+    <select id="authorSort">
+        <option value="">Author (default)</option>
+        <option value="asc">Author A–Z</option>
+    </select>
+
+    <select id="yearSort">
+        <option value="">Year (default)</option>
+        <option value="asc">Oldest → Newest</option>
+    </select>
+</div>
+
+<div class="container">
+
+<!-- COPY THIS CARD TO ADD BOOKS -->
+<div class="card"
+     data-author="frank herbert"
+     data-year="1965"
+     data-tags="sci-fi classic">
+
+    <img src="assets/books/dune.jpg" alt="Dune cover">
+
+    <div class="card-content">
+        <div class="title">Dune (1965)</div>
+        <div class="meta">Frank Herbert · USA</div>
+        <div class="tags">
+            <span class="tag">Sci-Fi</span>
+            <span class="tag">Classic</span>
+        </div>
+        <div class="rating">★★★★★</div>
+    </div>
+</div>
+<!-- END CARD -->
+
+</div>
+
+<script src="books.js"></script>
+
+</body>
+</html>
