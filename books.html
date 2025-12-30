@@ -1,305 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Books</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* ===== Books Page Styles ===== */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Books</title>
+  <link rel="stylesheet" href="style.css">
 
-        body {
-            background: #fff0f5; /* soft pastel background */
-            color: #111;
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-            line-height: 1.5;
-        }
+  <style>
+    /* ===== Books Page Styles ===== */
 
-        .page {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    body {
+      background: #fff0f5;
+      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            text-align: center;
-        }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-        /* Navigation */
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+    }
 
-        .nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            background: #ffe4e1;
-            padding: 8px 16px;
-            border-radius: 12px;
-            transition: all 0.2s;
-        }
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
 
-        .nav a:hover,
-        .nav a.active {
-            background: #ffccd5;
-            color: #222;
-        }
+    .nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      background: #ffe4e1;
+      padding: 8px 16px;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
 
-        /* ===== Container for cards ===== */
-        <div class="filters">
-  <div class="filter-group">
-    <div class="filter-label">Author</div>
-    <div class="chip-row" id="chips-author"></div>
-  </div>
+    .nav a:hover,
+    .nav a.active {
+      background: #ffccd5;
+      color: #222;
+    }
 
-  <div class="filter-group">
-    <div class="filter-label">Tag</div>
-    <div class="chip-row" id="chips-tag"></div>
-  </div>
+    /* ===== Filters (chips) ===== */
+    .filters{
+      margin: 0 0 18px;
+      display: grid;
+      gap: 12px;
+    }
 
-  <div class="filter-group">
-    <div class="filter-label">Year read</div>
-    <div class="chip-row" id="chips-year"></div>
-  </div>
+    .filter-group{
+      display: grid;
+      gap: 6px;
+    }
 
-  <button id="filter-reset" type="button" class="reset-btn">Reset</button>
-</div>
-        .container {
-            display: grid;
-            grid-template-columns: 1fr; /* mobile: single column */
-            gap: 16px;
-            margin-bottom: 24px;
-        }
+    .filter-label{
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.8;
+      text-align: center;
+    }
 
-        /* ===== Cards ===== */
-        .filters{
-  margin: 0 0 18px;
-  display: grid;
-  gap: 12px;
-}
+    .chip-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
 
-.filter-group{
-  display: grid;
-  gap: 6px;
-}
+    .chip{
+      border: 0;
+      cursor: pointer;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,200,210,0.35);
+      font: inherit;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
 
-.filter-label{
-  font-size: 0.9rem;
-  font-weight: 600;
-  opacity: 0.8;
-  text-align: center;
-}
+    .chip:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
 
-.chip-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
+    .chip.active{
+      background: #ffccd5;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
 
-.chip{
-  border: 0;
-  cursor: pointer;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255,200,210,0.35);
-  font: inherit;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-}
+    .reset-btn{
+      justify-self: center;
+      border: 0;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: #ffe4e1;
+      font: inherit;
+      transition: background 0.2s;
+    }
 
-.chip:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
+    .reset-btn:hover{
+      background: #ffccd5;
+    }
 
-.chip.active{
-  background: #ffccd5;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-}
+    /* ===== Container for cards ===== */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr; /* mobile: single column */
+      gap: 16px;
+      margin-bottom: 24px;
+    }
 
-.reset-btn{
-  justify-self: center;
-  border: 0;
-  cursor: pointer;
-  padding: 8px 14px;
-  border-radius: 12px;
-  background: #ffe4e1;
-  font: inherit;
-  transition: background 0.2s;
-}
+    /* ===== Cards ===== */
+    .card {
+      display: flex;
+      flex-direction: column; /* stacked on mobile */
+      background: #fff7f7;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
 
-.reset-btn:hover{
-  background: #ffccd5;
-}
-        
-        .card {
-            display: flex;
-            flex-direction: column; /* stacked on mobile */
-            background: #fff7f7;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
+    .card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
 
-        .card img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            display: block;
-            border-radius: 8px;
-        }
+    .card-content {
+      padding: 12px;
+    }
 
-        .card-content {
-            padding: 12px;
-        }
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
 
-        .title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+    .meta {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
 
-        .meta {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-bottom: 6px;
-        }
+    .tags {
+      margin-bottom: 6px;
+    }
 
-        .tags {
-            margin-bottom: 6px;
-        }
+    .tag {
+      display: inline-block;
+      background: rgba(255,200,210,0.3);
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      margin-right: 4px;
+    }
 
-        .tag {
-            display: inline-block;
-            background: rgba(255,200,210,0.3);
-            padding: 3px 8px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            margin-right: 4px;
-        }
+    .rating {
+      font-size: 0.9rem;
+    }
 
-        .rating {
-            font-size: 0.9rem;
-        }
+    .date-read {
+      font-style: italic;
+      opacity: 0.75;
+    }
 
-        .date-read {
-            font-style: italic;
-            opacity: 0.75;
-        }
+    /* ===== Desktop layout ===== */
+    @media (min-width: 600px) {
+      .card {
+        flex-direction: row; /* cover left, content right */
+        gap: 16px;
+      }
 
-        /* ===== Desktop layout ===== */
-        @media (min-width: 600px) {
-            .card {
-                flex-direction: row; /* cover left, content right */
-                gap: 16px;
-            }
+      .card img {
+        width: 120px;
+        max-height: 180px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
 
-            .card img {
-                width: 120px;
-                max-height: 180px;
-                border-radius: 8px;
-                flex-shrink: 0;
-            }
+      .card-content {
+        flex: 1;
+      }
 
-            .card-content {
-                flex: 1;
-            }
-
-            .container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-    </style>
+      .container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="page">
+  <div class="page">
 
     <!-- Navigation -->
     <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="books.html" class="active">Books</a>
-        <a href="movies.html">Movies</a>
-        <a href="series.html">Series</a>
-        <a href="music.html">Music</a>
+      <a href="index.html">Home</a>
+      <a href="books.html" class="active">Books</a>
+      <a href="movies.html">Movies</a>
+      <a href="series.html">Series</a>
+      <a href="music.html">Music</a>
     </div>
 
     <h1>My Books</h1>
-<div class="container">
-    <!-- BOOK CARD -->
-        <div class="card"
-             data-author="Margaret Forster"
-             data-tags="Fiction,Diary"
-             data-year-read="2025">
-    <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
 
-            <div class="card-content">
-                <h3 class="title">Diary of an Ordinary Woman</h3>
-                <p class="meta">Margaret Forster | 2004 | England</p>
-                <p class="meta date-read">📅 25 October 2025</p>
-                <div class="tags">
-                    <span class="tag">Fiction</span>
-<span class="tag">Diary</span>
-                </div>
-                <p class="rating">Rating: ★★★★★</p>
-            </div>
-        </div>
+    <!-- Filters UI (belongs in BODY, not in STYLE) -->
+    <div class="filters">
+      <div class="filter-group">
+        <div class="filter-label">Author</div>
+        <div class="chip-row" id="chips-author"></div>
+      </div>
 
-<!-- BOOK CARD -->
-        <div class="card"
-             data-author="Janice Hallett"
-             data-tags="Fiction,Mystery,Thriller"
-             data-year-read="2025">
-               <img src="images/images/books/hallett-j_the-killer-question.jpg" alt="The Killer Question cover">
-            <div class="card-content">
-                <h3 class="title">The Killer Question</h3>
-                <p class="meta">Janice Hallett | 2025 | UK</p>
-                <p class="meta date-read">📅 19 December 2025</p>
-                <div class="tags">
-                    <span class="tag">Fiction</span>
-                    <span class="tag">Mystery</span>
-                    <span class="tag">Thriller</span>
-                </div>
-                <p class="rating">Rating: ★★★★★</p>
-            </div>
-        </div>
+      <div class="filter-group">
+        <div class="filter-label">Tag</div>
+        <div class="chip-row" id="chips-tag"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-label">Year read</div>
+        <div class="chip-row" id="chips-year"></div>
+      </div>
+
+      <button id="filter-reset" type="button" class="reset-btn">Reset</button>
     </div>
 
-<!-- BOOK CARD TEMPLATE-->
-        <div class="card"
-             data-author="AUTHOR"
-             data-tags="TAG1,TAG2,TAG3"
-             data-year-read="YEAR">
-                <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="_________ cover">
-            <div class="card-content">
-                <h3 class="title">Book Title</h3>
-                <p class="meta">Author | Year | Country</p>
-                <p class="meta date-read">📅 Date</p>
-                <div class="tags">
-                    <span class="tag">Tag 1</span>
-                    <span class="tag">Tag 2</span>
-                </div>
-                <p class="rating">Rating: ★★★★☆</p>
-            </div>
+    <!-- Cards grid -->
+    <div class="container">
+
+      <!-- BOOK CARD -->
+      <div class="card"
+           data-author="Margaret Forster"
+           data-tags="Fiction,Diary"
+           data-year-read="2025">
+        <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
+        <div class="card-content">
+          <h3 class="title">Diary of an Ordinary Woman</h3>
+          <p class="meta">Margaret Forster | 2004 | England</p>
+          <p class="meta date-read">📅 25 October 2025</p>
+          <div class="tags">
+            <span class="tag">Fiction</span>
+            <span class="tag">Diary</span>
+          </div>
+          <p class="rating">Rating: ★★★★★</p>
         </div>
-    </div>
+      </div>
 
+      <!-- BOOK CARD -->
+      <div class="card"
+           data-author="Janice Hallett"
+           data-tags="Fiction,Mystery,Thriller"
+           data-year-read="2025">
+        <img src="images/images/books/hallett-j_the-killer-question.jpg" alt="The Killer Question cover">
+        <div class="card-content">
+          <h3 class="title">The Killer Question</h3>
+          <p class="meta">Janice Hallett | 2025 | UK</p>
+          <p class="meta date-read">📅 19 December 2025</p>
+          <div class="tags">
+            <span class="tag">Fiction</span>
+            <span class="tag">Mystery</span>
+            <span class="tag">Thriller</span>
+          </div>
+          <p class="rating">Rating: ★★★★★</p>
+        </div>
+      </div>
 
-</div>
+      <!-- BOOK CARD TEMPLATE -->
+      <div class="card"
+           data-author="AUTHOR"
+           data-tags="TAG1,TAG2,TAG3"
+           data-year-read="YEAR">
+        <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Book cover">
+        <div class="card-content">
+          <h3 class="title">Book Title</h3>
+          <p class="meta">Author | Year | Country</p>
+          <p class="meta date-read">📅 Date</p>
+          <div class="tags">
+            <span class="tag">Tag 1</span>
+            <span class="tag">Tag 2</span>
+          </div>
+          <p class="rating">Rating: ★★★★☆</p>
+        </div>
+      </div>
 
-<script src="books.js"></script>
+    </div><!-- end .container -->
+
+  </div><!-- end .page -->
+
+  <script src="books.js"></script>
 </body>
 </html>
