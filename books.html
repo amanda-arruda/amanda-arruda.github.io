@@ -54,6 +54,24 @@
         }
 
         /* ===== Container for cards ===== */
+        <div class="filters">
+  <div class="filter-group">
+    <div class="filter-label">Author</div>
+    <div class="chip-row" id="chips-author"></div>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-label">Tag</div>
+    <div class="chip-row" id="chips-tag"></div>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-label">Year read</div>
+    <div class="chip-row" id="chips-year"></div>
+  </div>
+
+  <button id="filter-reset" type="button" class="reset-btn">Reset</button>
+</div>
         .container {
             display: grid;
             grid-template-columns: 1fr; /* mobile: single column */
@@ -62,6 +80,66 @@
         }
 
         /* ===== Cards ===== */
+        .filters{
+  margin: 0 0 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.filter-group{
+  display: grid;
+  gap: 6px;
+}
+
+.filter-label{
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.chip-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.chip{
+  border: 0;
+  cursor: pointer;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,200,210,0.35);
+  font: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.chip:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.chip.active{
+  background: #ffccd5;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.reset-btn{
+  justify-self: center;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #ffe4e1;
+  font: inherit;
+  transition: background 0.2s;
+}
+
+.reset-btn:hover{
+  background: #ffccd5;
+}
+        
         .card {
             display: flex;
             flex-direction: column; /* stacked on mobile */
@@ -162,13 +240,16 @@
     <h1>My Books</h1>
 <div class="container">
     <!-- BOOK CARD -->
-        <div class="card">
+        <div class="card"
+             data-author="Margaret Forster"
+             data-tags="Fiction,Diary"
+             data-year-read="2025">
     <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="Diary of an Ordinary Woman cover">
 
             <div class="card-content">
                 <h3 class="title">Diary of an Ordinary Woman</h3>
                 <p class="meta">Margaret Forster | 2004 | England</p>
-                <p class="meta date-read">📅 Finished: 25 October 2025</p>
+                <p class="meta date-read">📅 25 October 2025</p>
                 <div class="tags">
                     <span class="tag">Fiction</span>
 <span class="tag">Diary</span>
@@ -178,12 +259,15 @@
         </div>
 
 <!-- BOOK CARD -->
-        <div class="card">
+        <div class="card"
+             data-author="Janice Hallett"
+             data-tags="Fiction,Mystery,Thriller"
+             data-year-read="2025">
                <img src="images/images/books/hallett-j_the-killer-question.jpg" alt="The Killer Question cover">
             <div class="card-content">
                 <h3 class="title">The Killer Question</h3>
                 <p class="meta">Janice Hallett | 2025 | UK</p>
-                <p class="meta date-read">📅 Finished: 19 December 2025</p>
+                <p class="meta date-read">📅 19 December 2025</p>
                 <div class="tags">
                     <span class="tag">Fiction</span>
                     <span class="tag">Mystery</span>
@@ -195,12 +279,15 @@
     </div>
 
 <!-- BOOK CARD TEMPLATE-->
-        <div class="card">
+        <div class="card"
+             data-author="AUTHOR"
+             data-tags="TAG1,TAG2,TAG3"
+             data-year-read="YEAR">
                 <img src="images/images/books/forster-m_diary-of-an-ordinary-woman.jpg" alt="_________ cover">
             <div class="card-content">
                 <h3 class="title">Book Title</h3>
                 <p class="meta">Author | Year | Country</p>
-                <p class="meta date-read">📅 Finished: Date</p>
+                <p class="meta date-read">📅 Date</p>
                 <div class="tags">
                     <span class="tag">Tag 1</span>
                     <span class="tag">Tag 2</span>
